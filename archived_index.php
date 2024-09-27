@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home | LoanHub</title>
+  <title> Archived_Index | LoanHub</title>
 
 <?php
   session_start();
