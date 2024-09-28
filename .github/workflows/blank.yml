@@ -1,54 +1,38 @@
 # This is a basic workflow to help you get started with Actions
 
-name:My Workflow
+name: My Workflow
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
   pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - "main"
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
       - name: Checkout code
-        run:|
-        echo  "Checking out code..."
+        run: |
+          echo "Checking out code..."
           ls -al
-
-      # Runs a set of commands using the runners shell
       - name: Run build and test scripts
         run: |
           echo "Building and testing..."
           composer install || exit 1
           phpunit || exit 1
-      # Runs Deploy (optional)
       - name: Deploy to production
-          uses: digitalocean/do-deploy-v2
-          env:
-            DO_TOKEN: ${{ secrets.Web1097_hub }}
-            DO_APP_NAME:LoanHub
-            DO_ENVIRONMENT: production
+        uses: digitalocean/do-deploy-v2
+        env:
+          DO_TOKEN: ${{ secrets.Web1097_hub }}
+          DO_APP_NAME: LoanHub
+          DO_ENVIRONMENT: production
         run: |
-        echo "Deploying to production..."
-
-      # Runs Final message
+          echo "Deploying to production..."
       - name: Completion message
         run: |
-          echo "Workflow completed successfully!"   
-
+          echo "Workflow completed successfully!"
