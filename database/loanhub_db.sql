@@ -28,14 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `borrowers` (
-  `id` int(30) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `mobile_no` varchar(30) NOT NULL,
   `address` text NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `tax_id` varchar(50) NOT NULL,
-  `date_created` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL UNIQUE,
+  `tax_id` varchar(50) NOT NULL UNIQUE,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,8 +44,9 @@ CREATE TABLE `borrowers` (
 -- Dumping data for table `borrowers`
 --
 
-INSERT INTO `borrowers` (`id`, `firstname`,`lastname`, `mobile_no`, `address`, `email`, `tax_id`, `date_created`) VALUES
-(1, 'John', 'Smith', '+16554 454654', 'Sample address', 'jsmith@sample.com', '789845-23', 0);
+INSERT INTO `borrowers` (`firstname`, `lastname`, `mobile_no`, `address`, `email`, `tax_id`)
+VALUES 
+('John', 'Smith', '+16554454654', 'Sample address', 'jsmith@sample.com', '789845-23');
 
 -- --------------------------------------------------------
 
