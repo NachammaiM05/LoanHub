@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: My Workflow
+name: CI
 
 on:
   push:
@@ -15,25 +15,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run script
         run: |
-          echo "Checking out code..."
-          ls -al
+          echo "Workflow executed successfully"
+
       - name: Run build and test scripts
         run: |
           echo "Building and testing..."
           composer install || exit 1
           phpunit || exit 1
+
       - name: Deploy to production
         uses: digitalocean/do-deploy-v2
         env:
           DO_TOKEN: ${{ secrets.Web1097_hub }}
           DO_APP_NAME: LoanHub
           DO_ENVIRONMENT: production
-          name: Deploy message
         run: |
           echo "Deploying to production..."
+
       - name: Completion message
         run: |
           echo "Workflow completed successfully!"
