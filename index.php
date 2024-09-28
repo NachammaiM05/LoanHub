@@ -51,7 +51,7 @@
 
         /* Hero Section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1507209696998-3c532be9b2b5') no-repeat center center/cover;
+           background: url('images/photobacksitepgcab-1507209696998-3c532be9b2b5.jpg') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
