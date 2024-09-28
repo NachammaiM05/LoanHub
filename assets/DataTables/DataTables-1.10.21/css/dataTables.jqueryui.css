@@ -28,7 +28,7 @@ table.dataTable thead td:active {
 }
 table.dataTable tfoot th,
 table.dataTable tfoot td {
-  padding: 10px 18px 6px 18px;
+  padding: 10px 18px 6px;
 }
 table.dataTable tbody tr {
   background-color: #ffffff;
@@ -242,7 +242,6 @@ table.dataTable td {
 .dataTables_wrapper {
   position: relative;
   clear: both;
-  *zoom: 1;
   zoom: 1;
 }
 .dataTables_wrapper .dataTables_length {
