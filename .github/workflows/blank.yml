@@ -31,6 +31,7 @@ jobs:
           DO_TOKEN: ${{ secrets.Web1097_hub }}
           DO_APP_NAME: LoanHub
           DO_ENVIRONMENT: production
+          name: Deploy message
         run: |
           echo "Deploying to production..."
       - name: Completion message
